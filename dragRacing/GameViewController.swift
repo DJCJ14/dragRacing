@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
     
     @objc func buttonDown(_ sender: UIButton) {
         tinyAccel()
-        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(accelerate), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.015, target: self, selector: #selector(accelerate), userInfo: nil, repeats: true)
     }
 
     @objc func buttonUp(_ sender: UIButton) {
@@ -58,12 +58,11 @@ class GameViewController: UIViewController {
 
     func tinyAccel() {
         play.accelerateCar()
-        print("tinyAccel")
     }
 
     @objc func accelerate() {
         play.accelerateCar()
-        print(play.car.physicsBody?.velocity)
+       // print(play.car.physicsBody?.velocity)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
