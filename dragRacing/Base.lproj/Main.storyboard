@@ -26,11 +26,11 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-9Q-SVX">
-                                <rect key="frame" x="739" y="324" width="112" height="35"/>
+                                <rect key="frame" x="700" y="232" width="89" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Accelerator"/>
+                                <buttonConfiguration key="configuration" style="gray" image="gaspedal" imagePlacement="bottom"/>
                                 <connections>
                                     <action selector="acceleratorAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="YqE-Xn-s79"/>
                                     <outletCollection property="gestureRecognizers" destination="RkC-7v-y6c" appends="YES" id="kHM-bb-NA8"/>
@@ -50,10 +50,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="RkC-7v-y6c"/>
             </objects>
-            <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="101.40845070422536" y="2.2900763358778624"/>
         </scene>
     </scenes>
     <resources>
+        <image name="gaspedal" width="68" height="127"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -44,7 +44,11 @@ class GameViewController: UIViewController {
         
         acceleratorButton.addTarget(self, action: #selector(buttonDown), for: .touchDown)
         acceleratorButton.addTarget(self, action: #selector(buttonUp), for: [.touchUpInside, .touchUpOutside])
-        
+        acceleratorButton.setImage(UIImage(named: "gaspedal.png"), for: .normal)
+        acceleratorButton.clipsToBounds = true
+        acceleratorButton.contentMode = .scaleAspectFit
+
+
     }
     
     @objc func buttonDown(_ sender: UIButton) {

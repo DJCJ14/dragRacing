@@ -82,7 +82,7 @@ class GameScene: SKScene {
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
         }
         else if falseStart == true{
-            resetScene()
+            //resetScene()
         }
     }
     
