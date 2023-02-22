@@ -48,6 +48,15 @@ class GameViewController: UIViewController {
         acceleratorButton.clipsToBounds = true
         acceleratorButton.contentMode = .scaleAspectFit
 
+//        let rpm = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
+//        rpm.backgroundColor = .clear
+//            view.addSubview(rpm)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            UIView.animate(withDuration: 1) {
+//                rpm.value = 33
+//            }
+
 
     }
     

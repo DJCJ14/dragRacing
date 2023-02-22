@@ -18,6 +18,7 @@
 		7E255A3B2993DF95002BFA60 /* dragRacingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E255A3A2993DF95002BFA60 /* dragRacingTests.swift */; };
 		7E255A452993DF95002BFA60 /* dragRacingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E255A442993DF95002BFA60 /* dragRacingUITests.swift */; };
 		7E255A472993DF95002BFA60 /* dragRacingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E255A462993DF95002BFA60 /* dragRacingUITestsLaunchTests.swift */; };
+		7EAC710829A65056005EEDF1 /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAC710729A65056005EEDF1 /* GaugeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		7E255A402993DF95002BFA60 /* dragRacingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dragRacingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E255A442993DF95002BFA60 /* dragRacingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dragRacingUITests.swift; sourceTree = "<group>"; };
 		7E255A462993DF95002BFA60 /* dragRacingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dragRacingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7EAC710729A65056005EEDF1 /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				7E255A242993DF94002BFA60 /* Actions.sks */,
 				7E255A262993DF94002BFA60 /* GameScene.swift */,
 				7E255A282993DF94002BFA60 /* GameViewController.swift */,
+				7EAC710729A65056005EEDF1 /* GaugeView.swift */,
 				7E255A2A2993DF94002BFA60 /* Main.storyboard */,
 				7E255A2D2993DF95002BFA60 /* Assets.xcassets */,
 				7E255A2F2993DF95002BFA60 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			files = (
 				7E255A272993DF94002BFA60 /* GameScene.swift in Sources */,
 				7E255A292993DF94002BFA60 /* GameViewController.swift in Sources */,
+				7EAC710829A65056005EEDF1 /* GaugeView.swift in Sources */,
 				7E255A212993DF94002BFA60 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

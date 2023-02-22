@@ -21,6 +21,10 @@ class GameScene: SKScene {
     var stopYellow2 : SKSpriteNode!
     var stopGreen : SKSpriteNode!
     var falseStart = true
+    let mph = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
+    
+    
+    
     
     
     override func didMove(to view: SKView) {
@@ -57,6 +61,9 @@ class GameScene: SKScene {
         }
         
         self.camera = cam
+        
+        mph.backgroundColor = .clear
+        view.addSubview(mph)
     }
     
     func resetScene(){
@@ -95,6 +102,9 @@ class GameScene: SKScene {
             self.moveCar2()
         }
         cam.position.x = car.position.x
+
+        //mph.value = Int((car.physicsBody?.velocity.dx)!) / 10
+        
 
     }
 }
