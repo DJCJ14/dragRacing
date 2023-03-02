@@ -44,14 +44,20 @@ class GaugeView: UIView {
     let valueLabel = UILabel()
     var valueFont = UIFont.systemFont(ofSize: 23)
     var valueColor = UIColor.black
+    
+    var play: GameScene!
+
+    
 
     var value: Int = 0 {
         didSet {
+            
             // update the value label to show the exact number
-            valueLabel.text = String(value)
+//                valueLabel.text = String(play.mphVal)
+            
 
             // figure out where the needle is, between 0 and 1
-            let needlePosition = CGFloat(value) / 200
+            let needlePosition = CGFloat(value) / 500
 
             // create a lerp from the start angle (rotation) through to the end angle (rotation + totalAngle)
             let lerpFrom = rotation
@@ -218,9 +224,10 @@ class GaugeView: UIView {
         addSubview(needle)
         
         valueLabel.font = valueFont
-        valueLabel.text = "100"
+        valueLabel.text = "0"
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(valueLabel)
+        
 
         NSLayoutConstraint.activate([
             valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),

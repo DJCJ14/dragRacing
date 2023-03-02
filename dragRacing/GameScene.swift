@@ -22,6 +22,22 @@ class GameScene: SKScene {
     var stopGreen : SKSpriteNode!
     var falseStart = true
     let mph = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
+    let rpm = GaugeView(frame: CGRect(x: 210, y: 250, width: 128, height: 128))
+    var mphVal = 0
+    var gear1 = false
+    var gear2 = false
+    var gear3 = false
+    var gear4 = false
+    var gear5 = false
+    var gear6 = false
+    var pgear1 = false
+    var pgear2 = false
+    var pgear3 = false
+    var pgear4 = false
+    var pgear5 = false
+    var pgear6 = false
+    
+
     
     
     
@@ -64,6 +80,9 @@ class GameScene: SKScene {
         
         mph.backgroundColor = .clear
         view.addSubview(mph)
+        rpm.backgroundColor = .clear
+        view.addSubview(rpm)
+
     }
     
     func resetScene(){
@@ -85,26 +104,48 @@ class GameScene: SKScene {
     func accelerateCar(){
         count += 300
         //car.physicsBody?.velocity = CGVector(dx: count, dy: 0)
-        if falseStart == false{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        if (car.physicsBody?.velocity.dx)! < 305 * 10 && falseStart == false && gear1 == false{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3.07, dy: 0))
+
         }
-        else if falseStart == true{
-            //resetScene()
+        else if gear1 == true && (car.physicsBody?.velocity.dx)! < 555 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3.002, dy: 0))
         }
     }
     
     func moveCar2(){
-        car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        if (car2.physicsBody?.velocity.dx)! < 300 * 10 && pgear1 == false{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if pgear1 == true && (car2.physicsBody?.velocity.dx)! < 555 * 10{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+
+        }
     }
+    
+    
     
     override func update(_ currentTime: TimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.moveCar2()
         }
         cam.position.x = car.position.x
-
-        //mph.value = Int((car.physicsBody?.velocity.dx)!) / 10
         
+        self.mph.value = Int((self.car.physicsBody?.velocity.dx)!) / 10
+        mphVal = Int((self.car.physicsBody?.velocity.dx)!)  / 10
 
+        if gear1 == true && pgear1 == false{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                self.pgear1 = true
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+            }
+        }
+        
+        
+        
     }
+    
+    
+    
+    
 }

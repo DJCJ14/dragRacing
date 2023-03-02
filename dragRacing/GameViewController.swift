@@ -16,6 +16,9 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var acceleratorButton: UIButton!
     
+    @IBOutlet weak var shiftButton: UIButton!
+    
+    
     var counter = 0
     var timer: Timer?
     var play: GameScene!
@@ -100,6 +103,16 @@ class GameViewController: UIViewController {
         }
         raceButton.isHidden = true
         acceleratorButton.isHidden = false
+        shiftButton.isHidden = false
+        
+    }
+    
+    
+    @IBAction func shiftAction(_ sender: UIButton) {
+        if play.gear1 == false && (play.car.physicsBody?.velocity.dx)! > 235 * 10{
+            play.gear1 = true
+            print("Shifted")
+        }
     }
     
 
