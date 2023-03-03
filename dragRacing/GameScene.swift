@@ -36,12 +36,8 @@ class GameScene: SKScene {
     var pgear4 = false
     var pgear5 = false
     var pgear6 = false
-    
+        
 
-    
-    
-    
-    
     
     override func didMove(to view: SKView) {
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
@@ -82,8 +78,10 @@ class GameScene: SKScene {
         view.addSubview(mph)
         rpm.backgroundColor = .clear
         view.addSubview(rpm)
-
+        
     }
+    
+    
     
     func resetScene(){
         if let scene = GameScene(fileNamed:"GameScene") {
@@ -104,28 +102,28 @@ class GameScene: SKScene {
     func accelerateCar(){
         count += 300
         //car.physicsBody?.velocity = CGVector(dx: count, dy: 0)
-        if (car.physicsBody?.velocity.dx)! < 305 * 10 && falseStart == false && gear1 == false{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3.07, dy: 0))
+        if (car.physicsBody?.velocity.dx)! < 175 * 10 && falseStart == false && gear1 == false{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
 
         }
-        else if gear1 == true && (car.physicsBody?.velocity.dx)! < 555 * 10{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3.002, dy: 0))
+        else if gear1 == true && (car.physicsBody?.velocity.dx)! < 305 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
         }
     }
     
     func moveCar2(){
-        if (car2.physicsBody?.velocity.dx)! < 300 * 10 && pgear1 == false{
+        if (car2.physicsBody?.velocity.dx)! < 175 * 10 && pgear1 == false{
             car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
         }
-        else if pgear1 == true && (car2.physicsBody?.velocity.dx)! < 555 * 10{
+        else if pgear1 == true && (car2.physicsBody?.velocity.dx)! < 305 * 10{
             car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
 
         }
     }
     
-    
-    
     override func update(_ currentTime: TimeInterval) {
+ 
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.moveCar2()
         }
