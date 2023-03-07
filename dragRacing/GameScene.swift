@@ -21,8 +21,8 @@ class GameScene: SKScene {
     var stopYellow2 : SKSpriteNode!
     var stopGreen : SKSpriteNode!
     var falseStart = true
-    let mph = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
-    let rpm = GaugeView(frame: CGRect(x: 210, y: 250, width: 128, height: 128))
+    let rpm = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
+//    let mph = GaugeView(frame: CGRect(x: 210, y: 250, width: 128, height: 128))
     var mphVal = 0
     var gear1 = false
     var gear2 = false
@@ -74,10 +74,10 @@ class GameScene: SKScene {
         
         self.camera = cam
         
-        mph.backgroundColor = .clear
-        view.addSubview(mph)
         rpm.backgroundColor = .clear
         view.addSubview(rpm)
+//        mph.backgroundColor = .clear
+//        view.addSubview(mph)
         
     }
     
@@ -102,23 +102,54 @@ class GameScene: SKScene {
     func accelerateCar(){
         count += 300
         //car.physicsBody?.velocity = CGVector(dx: count, dy: 0)
-        if (car.physicsBody?.velocity.dx)! < 175 * 10 && falseStart == false && gear1 == false{
+        if (car.physicsBody?.velocity.dx)! < 75 * 10 && falseStart == false && gear1 == false{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
 
         }
-        else if gear1 == true && (car.physicsBody?.velocity.dx)! < 305 * 10{
+        else if gear1 == true && (car.physicsBody?.velocity.dx)! < 155 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
         }
+        else if gear2 == true && (car.physicsBody?.velocity.dx)! < 275 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if gear3 == true && (car.physicsBody?.velocity.dx)! < 400 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if gear4 == true && (car.physicsBody?.velocity.dx)! < 525 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if gear5 == true && (car.physicsBody?.velocity.dx)! < 650 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if gear6 == true && (car.physicsBody?.velocity.dx)! < 775 * 10{
+            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        
     }
     
     func moveCar2(){
-        if (car2.physicsBody?.velocity.dx)! < 175 * 10 && pgear1 == false{
+        if (car2.physicsBody?.velocity.dx)! < 75 * 10 && pgear1 == false{
             car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
         }
-        else if pgear1 == true && (car2.physicsBody?.velocity.dx)! < 305 * 10{
+        else if pgear1 == true && (car2.physicsBody?.velocity.dx)! < 155 * 10{
             car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
-
         }
+        else if pgear2 == true && (car2.physicsBody?.velocity.dx)! < 275 * 10{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if pgear3 == true && (car2.physicsBody?.velocity.dx)! < 400 * 10{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if pgear4 == true && (car2.physicsBody?.velocity.dx)! < 525 * 10{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if pgear5 == true && (car2.physicsBody?.velocity.dx)! < 650 * 10{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        else if pgear6 == true && (car2.physicsBody?.velocity.dx)! < 775 * 10{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+        }
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -129,12 +160,36 @@ class GameScene: SKScene {
         }
         cam.position.x = car.position.x
         
-        self.mph.value = Int((self.car.physicsBody?.velocity.dx)!) / 10
+        self.rpm.value = Int((self.car.physicsBody?.velocity.dx)!) / 10
         mphVal = Int((self.car.physicsBody?.velocity.dx)!)  / 10
 
         if gear1 == true && pgear1 == false{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                 self.pgear1 = true
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+            }
+        }
+        if gear2 == true && pgear2 == false{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                self.pgear2 = true
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+            }
+        }
+        if gear3 == true && pgear3 == false{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                self.pgear3 = true
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+            }
+        }
+        if gear4 == true && pgear4 == false{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                self.pgear4 = true
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+            }
+        }
+        if gear5 == true && pgear5 == false{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                self.pgear5 = true
                 self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
             }
         }

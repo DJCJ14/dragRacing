@@ -109,9 +109,34 @@ class GameViewController: UIViewController {
     
     
     @IBAction func shiftAction(_ sender: UIButton) {
-        if play.gear1 == false && (play.car.physicsBody?.velocity.dx)! > 105 * 10{
+        if play.gear1 == false && (play.car.physicsBody?.velocity.dx)! > 25 * 10{
             play.gear1 = true
-            print("Shifted")
+            print("gear 1")
+        }
+        if play.gear1 == true && (play.car.physicsBody?.velocity.dx)! > 100 * 10{
+            play.gear1 = false
+            play.gear2 = true
+            print("gear 2")
+        }
+        if play.gear2 == true && (play.car.physicsBody?.velocity.dx)! > 220 * 10{
+            play.gear2 = false
+            play.gear3 = true
+            print("gear 3")
+        }
+        if play.gear3 == true && (play.car.physicsBody?.velocity.dx)! > 345 * 10{
+            play.gear3 = false
+            play.gear4 = true
+            print("gear 4")
+        }
+        if play.gear4 == true && (play.car.physicsBody?.velocity.dx)! > 470 * 10{
+            play.gear4 = false
+            play.gear5 = true
+            print("gear 5")
+        }
+        if play.gear5 == true && (play.car.physicsBody?.velocity.dx)! > 595 * 10{
+            play.gear5 = false
+            play.gear6 = true
+            print("gear 6")
         }
     }
     
