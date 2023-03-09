@@ -164,33 +164,33 @@ class GameScene: SKScene {
         mphVal = Int((self.car.physicsBody?.velocity.dx)!)  / 10
 
         if gear1 == true && pgear1 == false{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.pgear1 = true
                 self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
             }
         }
         if gear2 == true && pgear2 == false{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.pgear2 = true
-                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.3, dy: 0))
             }
         }
         if gear3 == true && pgear3 == false{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                 self.pgear3 = true
-                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.1, dy: 0))
             }
         }
         if gear4 == true && pgear4 == false{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                 self.pgear4 = true
-                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -0.9, dy: 0))
             }
         }
         if gear5 == true && pgear5 == false{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                 self.pgear5 = true
-                self.car2.physicsBody?.applyImpulse(CGVector(dx: -1.6, dy: 0))
+                self.car2.physicsBody?.applyImpulse(CGVector(dx: -0.6, dy: 0))
             }
         }
         

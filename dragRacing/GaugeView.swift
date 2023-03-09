@@ -18,7 +18,7 @@ class GaugeView: UIView {
     var insideColor = UIColor.white
     
     var segmentWidth: CGFloat = 20
-    var segmentColors = [UIColor(red: 0.7, green: 0, blue: 0, alpha: 1), UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0.7, green: 0, blue: 0, alpha: 1)]
+    var segmentColors = [UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), UIColor(red: 0.7, green: 0, blue: 0, alpha: 1)]
 
     var totalAngle: CGFloat = 270
     var rotation: CGFloat = -135
@@ -45,19 +45,44 @@ class GaugeView: UIView {
     var valueFont = UIFont.systemFont(ofSize: 23)
     var valueColor = UIColor.black
     
-    var play: GameScene!
+    var play: GameScene?
+    
+    var timer: Timer?
+
 
     
 
     var value: Int = 0 {
         didSet {
-            
             // update the value label to show the exact number
 //                valueLabel.text = String(play.mphVal)
             
 
             // figure out where the needle is, between 0 and 1
-            let needlePosition = CGFloat(value) / 500
+            var needlePosition = CGFloat(value) / 35
+                        
+            
+            
+//                if self.play?.gear1 == true{
+//                     needlePosition = CGFloat(self.value) / 77.5
+//                    print("test")
+//                }
+//                else if self.play?.gear2 == true{
+//                     needlePosition = CGFloat(self.value) / 137.5
+//                }
+//                else if self.play?.gear3 == true{
+//                     needlePosition = CGFloat(self.value) / 200
+//                }
+//                else if self.play?.gear4 == true{
+//                     needlePosition = CGFloat(self.value) / 262.5
+//                }
+//                else if self.play?.gear5 == true{
+//                     needlePosition = CGFloat(self.value) / 325
+//                }
+//                else if self.play?.gear6 == true{
+//                     needlePosition = CGFloat(self.value) / 387.5
+//                }
+            
 
             // create a lerp from the start angle (rotation) through to the end angle (rotation + totalAngle)
             let lerpFrom = rotation

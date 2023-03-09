@@ -123,17 +123,17 @@ class GameViewController: UIViewController {
             play.gear3 = true
             print("gear 3")
         }
-        if play.gear3 == true && (play.car.physicsBody?.velocity.dx)! > 345 * 10{
+        if play.gear3 == true && (play.car.physicsBody?.velocity.dx)! > 325 * 10{
             play.gear3 = false
             play.gear4 = true
             print("gear 4")
         }
-        if play.gear4 == true && (play.car.physicsBody?.velocity.dx)! > 470 * 10{
+        if play.gear4 == true && (play.car.physicsBody?.velocity.dx)! > 450 * 10{
             play.gear4 = false
             play.gear5 = true
             print("gear 5")
         }
-        if play.gear5 == true && (play.car.physicsBody?.velocity.dx)! > 595 * 10{
+        if play.gear5 == true && (play.car.physicsBody?.velocity.dx)! > 575 * 10{
             play.gear5 = false
             play.gear6 = true
             print("gear 6")
