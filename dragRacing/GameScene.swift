@@ -9,20 +9,20 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
+    let rgear = [33.5, 77.5, 137.5, 200, 262.5, 325, 387.5]
+    let rpm = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
+//    let mph = GaugeView(frame: CGRect(x: 210, y: 250, width: 128, height: 128))
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     var car : SKSpriteNode!
     var car2 : SKSpriteNode!
-    var count = 0
+    var count = 1
     let cam = SKCameraNode()
     var stopRed : SKSpriteNode!
     var stopYellow1 : SKSpriteNode!
     var stopYellow2 : SKSpriteNode!
     var stopGreen : SKSpriteNode!
     var falseStart = true
-    let rpm = GaugeView(frame: CGRect(x: 45, y: 250, width: 128, height: 128))
-//    let mph = GaugeView(frame: CGRect(x: 210, y: 250, width: 128, height: 128))
     var mphVal = 0
     var gear1 = false
     var gear2 = false
@@ -36,7 +36,7 @@ class GameScene: SKScene {
     var pgear4 = false
     var pgear5 = false
     var pgear6 = false
-        
+
 
     
     override func didMove(to view: SKView) {
@@ -100,29 +100,39 @@ class GameScene: SKScene {
     }
     
     func accelerateCar(){
-        count += 300
         //car.physicsBody?.velocity = CGVector(dx: count, dy: 0)
         if (car.physicsBody?.velocity.dx)! < 75 * 10 && falseStart == false && gear1 == false{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
-
         }
         else if gear1 == true && (car.physicsBody?.velocity.dx)! < 155 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            count += 1
+
         }
         else if gear2 == true && (car.physicsBody?.velocity.dx)! < 275 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            count += 1
+
         }
         else if gear3 == true && (car.physicsBody?.velocity.dx)! < 400 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            count += 1
+
         }
         else if gear4 == true && (car.physicsBody?.velocity.dx)! < 525 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            count += 1
+
         }
         else if gear5 == true && (car.physicsBody?.velocity.dx)! < 650 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            count += 1
+
         }
         else if gear6 == true && (car.physicsBody?.velocity.dx)! < 775 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            count += 1
+
         }
         
     }

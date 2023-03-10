@@ -8,7 +8,7 @@
 import UIKit
 
 class GaugeView: UIView {
-
+    
     var outerBezelColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
     var outerBezelWidth: CGFloat = 5
 
@@ -45,7 +45,7 @@ class GaugeView: UIView {
     var valueFont = UIFont.systemFont(ofSize: 23)
     var valueColor = UIColor.black
     
-    var play: GameScene?
+    var play: GameScene!
     
     var timer: Timer?
 
@@ -59,39 +59,38 @@ class GaugeView: UIView {
             
 
             // figure out where the needle is, between 0 and 1
+//            var needlePosition = CGFloat(value) / play!.rgear[play!.count]
             var needlePosition = CGFloat(value) / 35
-                        
-            
-            
-//                if self.play?.gear1 == true{
-//                     needlePosition = CGFloat(self.value) / 77.5
-//                    print("test")
-//                }
-//                else if self.play?.gear2 == true{
-//                     needlePosition = CGFloat(self.value) / 137.5
-//                }
-//                else if self.play?.gear3 == true{
-//                     needlePosition = CGFloat(self.value) / 200
-//                }
-//                else if self.play?.gear4 == true{
-//                     needlePosition = CGFloat(self.value) / 262.5
-//                }
-//                else if self.play?.gear5 == true{
-//                     needlePosition = CGFloat(self.value) / 325
-//                }
-//                else if self.play?.gear6 == true{
-//                     needlePosition = CGFloat(self.value) / 387.5
-//                }
-            
-
-            // create a lerp from the start angle (rotation) through to the end angle (rotation + totalAngle)
-            let lerpFrom = rotation
-            let lerpTo = rotation + totalAngle
-
-            // lerp from the start to the end position, based on the needle's position
-            let needleRotation = lerpFrom + (lerpTo - lerpFrom) * needlePosition
-            needle.transform = CGAffineTransform(rotationAngle: deg2rad(needleRotation))
-        }
+                
+                //                if self.play?.gear1 == true{
+                //                     needlePosition = CGFloat(self.value) / 77.5
+                //                    print("test")
+                //                }
+                //                else if self.play?.gear2 == true{
+                //                     needlePosition = CGFloat(self.value) / 137.5
+                //                }
+                //                else if self.play?.gear3 == true{
+                //                     needlePosition = CGFloat(self.value) / 200
+                //                }
+                //                else if self.play?.gear4 == true{
+                //                     needlePosition = CGFloat(self.value) / 262.5
+                //                }
+                //                else if self.play?.gear5 == true{
+                //                     needlePosition = CGFloat(self.value) / 325
+                //                }
+                //                else if self.play?.gear6 == true{
+                //                     needlePosition = CGFloat(self.value) / 387.5
+                //                }
+                
+                
+                // create a lerp from the start angle (rotation) through to the end angle (rotation + totalAngle)
+                let lerpFrom = rotation
+                let lerpTo = rotation + totalAngle
+                
+                // lerp from the start to the end position, based on the needle's position
+                let needleRotation = lerpFrom + (lerpTo - lerpFrom) * needlePosition
+                needle.transform = CGAffineTransform(rotationAngle: deg2rad(needleRotation))
+            }
     }
 
     
