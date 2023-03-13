@@ -46,6 +46,7 @@ class GaugeView: UIView {
     var valueColor = UIColor.black
     
     var play: GameScene!
+    var viewcon: GameViewController!
     
     var timer: Timer?
 
@@ -59,8 +60,8 @@ class GaugeView: UIView {
             
 
             // figure out where the needle is, between 0 and 1
-//            var needlePosition = CGFloat(value) / play!.rgear[play!.count]
-            var needlePosition = CGFloat(value) / 35
+//            var needlePosition = CGFloat(value) / play!.rgear[viewcon!.counter]
+            var needlePosition = CGFloat(value) / 663
                 
                 //                if self.play?.gear1 == true{
                 //                     needlePosition = CGFloat(self.value) / 77.5

@@ -81,7 +81,18 @@ class GameScene: SKScene {
         
     }
     
-    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "finishLine1"{
+            print("car1 wins")
+        }
+        
+        if contact.bodyB.node?.name == "finishLine1"{
+            print("car1 wins")
+
+        }
+
+    }
+
     
     func resetScene(){
         if let scene = GameScene(fileNamed:"GameScene") {
@@ -115,25 +126,26 @@ class GameScene: SKScene {
 
         }
         else if gear3 == true && (car.physicsBody?.velocity.dx)! < 400 * 10{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
             count += 1
 
         }
         else if gear4 == true && (car.physicsBody?.velocity.dx)! < 525 * 10{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
             count += 1
 
         }
         else if gear5 == true && (car.physicsBody?.velocity.dx)! < 650 * 10{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
             count += 1
 
         }
         else if gear6 == true && (car.physicsBody?.velocity.dx)! < 775 * 10{
-            car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car.physicsBody?.applyImpulse(CGVector(dx: 3.5, dy: 0))
             count += 1
 
         }
+        
         
     }
     
@@ -148,16 +160,16 @@ class GameScene: SKScene {
             car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
         }
         else if pgear3 == true && (car2.physicsBody?.velocity.dx)! < 400 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
         }
         else if pgear4 == true && (car2.physicsBody?.velocity.dx)! < 525 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
         }
         else if pgear5 == true && (car2.physicsBody?.velocity.dx)! < 650 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.5, dy: 0))
         }
         else if pgear6 == true && (car2.physicsBody?.velocity.dx)! < 775 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
         }
         
     }
@@ -204,7 +216,18 @@ class GameScene: SKScene {
             }
         }
         
-        
+        if car.position.x > 77500 && car.position.x > car2.position.x{
+            print("car1 wins!")
+            car.physicsBody?.linearDamping = 15
+            car2.physicsBody?.linearDamping = 15
+
+        }
+        else if car2.position.x > 77500 && car.position.x < car2.position.x{
+            print("car2 wins!")
+            car.physicsBody?.linearDamping = 15
+            car2.physicsBody?.linearDamping = 15
+
+        }
         
     }
     
