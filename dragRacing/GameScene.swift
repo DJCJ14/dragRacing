@@ -22,6 +22,9 @@ class GameScene: SKScene {
     var stopYellow1 : SKSpriteNode!
     var stopYellow2 : SKSpriteNode!
     var stopGreen : SKSpriteNode!
+    var winLabel : SKLabelNode!
+    var firework1 : SKEmitterNode!
+    var firework2 : SKEmitterNode!
     var falseStart = true
     var mphVal = 0
     var gear1 = false
@@ -30,12 +33,14 @@ class GameScene: SKScene {
     var gear4 = false
     var gear5 = false
     var gear6 = false
+    var pgear0 = false
     var pgear1 = false
     var pgear2 = false
     var pgear3 = false
     var pgear4 = false
     var pgear5 = false
     var pgear6 = false
+    var gearcounter = 0
 
 
     
@@ -43,13 +48,21 @@ class GameScene: SKScene {
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
         
+
+        
         car = self.childNode(withName: "car") as? SKSpriteNode
         car2 = self.childNode(withName: "car2") as? SKSpriteNode
         stopRed = self.childNode(withName: "stopRed") as? SKSpriteNode
         stopYellow1 = self.childNode(withName: "stopYellow1") as? SKSpriteNode
         stopYellow2 = self.childNode(withName: "stopYellow2") as? SKSpriteNode
         stopGreen = self.childNode(withName: "stopGreen") as? SKSpriteNode
+        winLabel = self.childNode(withName: "winLabel") as? SKLabelNode
+        firework1 = self.childNode(withName: "firework1") as? SKEmitterNode
+        firework2 = self.childNode(withName: "firework1") as? SKEmitterNode
+
+
         
+        winLabel.isHidden = true
         stopRed.isHidden = true
         stopYellow1.isHidden = true
         stopYellow2.isHidden = true
@@ -117,32 +130,26 @@ class GameScene: SKScene {
         }
         else if gear1 == true && (car.physicsBody?.velocity.dx)! < 155 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
-            count += 1
 
         }
         else if gear2 == true && (car.physicsBody?.velocity.dx)! < 275 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
-            count += 1
 
         }
         else if gear3 == true && (car.physicsBody?.velocity.dx)! < 400 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
-            count += 1
 
         }
         else if gear4 == true && (car.physicsBody?.velocity.dx)! < 525 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
-            count += 1
 
         }
         else if gear5 == true && (car.physicsBody?.velocity.dx)! < 650 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
-            count += 1
 
         }
         else if gear6 == true && (car.physicsBody?.velocity.dx)! < 775 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3.5, dy: 0))
-            count += 1
 
         }
         
@@ -151,25 +158,28 @@ class GameScene: SKScene {
     
     func moveCar2(){
         if (car2.physicsBody?.velocity.dx)! < 75 * 10 && pgear1 == false{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.2, dy: 0))
         }
         else if pgear1 == true && (car2.physicsBody?.velocity.dx)! < 155 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.3, dy: 0))
         }
         else if pgear2 == true && (car2.physicsBody?.velocity.dx)! < 275 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.3, dy: 0))
         }
         else if pgear3 == true && (car2.physicsBody?.velocity.dx)! < 400 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.8, dy: 0))
         }
         else if pgear4 == true && (car2.physicsBody?.velocity.dx)! < 525 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.5, dy: 0))
         }
         else if pgear5 == true && (car2.physicsBody?.velocity.dx)! < 650 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3.5, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 3.7, dy: 0))
         }
         else if pgear6 == true && (car2.physicsBody?.velocity.dx)! < 775 * 10{
             car2.physicsBody?.applyImpulse(CGVector(dx: 3.4, dy: 0))
+        }
+        else if pgear0 == true{
+            car2.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 0))
         }
         
     }
@@ -182,6 +192,7 @@ class GameScene: SKScene {
         }
         cam.position.x = car.position.x
         
+        self.rpm.value2 = gearcounter
         self.rpm.value = Int((self.car.physicsBody?.velocity.dx)!) / 10
         mphVal = Int((self.car.physicsBody?.velocity.dx)!)  / 10
 
@@ -218,14 +229,31 @@ class GameScene: SKScene {
         
         if car.position.x > 77500 && car.position.x > car2.position.x{
             print("car1 wins!")
-            car.physicsBody?.linearDamping = 15
-            car2.physicsBody?.linearDamping = 15
+            self.pgear6 = false
+            self.pgear5 = false
+            self.pgear0 = true
+            car.physicsBody?.linearDamping = 150
+            car2.physicsBody?.linearDamping = 150
+            winLabel.text = "You Win!"
+            winLabel.position.x = cam.position.x
+            winLabel.isHidden = false
+            firework1.numParticlesToEmit = 1000
+            firework2.numParticlesToEmit = 1000
+            firework1.resetSimulation()
+            firework2.resetSimulation()
+
 
         }
         else if car2.position.x > 77500 && car.position.x < car2.position.x{
             print("car2 wins!")
-            car.physicsBody?.linearDamping = 15
-            car2.physicsBody?.linearDamping = 15
+            self.pgear6 = false
+            self.pgear5 = false
+            self.pgear0 = true
+            winLabel.text = "You Lose :("
+            winLabel.position.x = cam.position.x
+            winLabel.isHidden = false
+            car.physicsBody?.linearDamping = 150
+            car2.physicsBody?.linearDamping = 150
 
         }
         

@@ -52,16 +52,16 @@ class GaugeView: UIView {
 
 
     
-
+    var value2 = 0
     var value: Int = 0 {
         didSet {
             // update the value label to show the exact number
-//                valueLabel.text = String(play.mphVal)
+                valueLabel.text = String(value2)
             
 
             // figure out where the needle is, between 0 and 1
 //            var needlePosition = CGFloat(value) / play!.rgear[viewcon!.counter]
-            var needlePosition = CGFloat(value) / 663
+            let needlePosition = CGFloat(value) / 663
                 
                 //                if self.play?.gear1 == true{
                 //                     needlePosition = CGFloat(self.value) / 77.5
