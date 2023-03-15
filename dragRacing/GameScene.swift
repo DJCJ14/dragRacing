@@ -41,6 +41,7 @@ class GameScene: SKScene {
     var pgear5 = false
     var pgear6 = false
     var gearcounter = 0
+    var raceover = false
 
 
     
@@ -58,7 +59,7 @@ class GameScene: SKScene {
         stopGreen = self.childNode(withName: "stopGreen") as? SKSpriteNode
         winLabel = self.childNode(withName: "winLabel") as? SKLabelNode
         firework1 = self.childNode(withName: "firework1") as? SKEmitterNode
-        firework2 = self.childNode(withName: "firework1") as? SKEmitterNode
+        firework2 = self.childNode(withName: "firework2") as? SKEmitterNode
 
 
         
@@ -92,18 +93,6 @@ class GameScene: SKScene {
 //        mph.backgroundColor = .clear
 //        view.addSubview(mph)
         
-    }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "finishLine1"{
-            print("car1 wins")
-        }
-        
-        if contact.bodyB.node?.name == "finishLine1"{
-            print("car1 wins")
-
-        }
-
     }
 
     
@@ -153,6 +142,36 @@ class GameScene: SKScene {
 
         }
         
+        if car.position.x > 77500 && car.position.x > car2.position.x && raceover == false{
+            print("car1 wins!")
+            self.pgear6 = false
+            self.pgear5 = false
+            self.pgear0 = true
+            car.physicsBody?.linearDamping = 150
+            car2.physicsBody?.linearDamping = 150
+            winLabel.text = "You Win!"
+            winLabel.position.x = cam.position.x
+            winLabel.isHidden = false
+            firework1.position = CGPoint(x: 77030.852, y: -20.012)
+            firework2.position = CGPoint(x: 78080, y: -20.012)
+            raceover = true
+
+
+        }
+        else if car2.position.x > 77500 && car.position.x < car2.position.x && raceover == false{
+            print("car2 wins!")
+            self.pgear6 = false
+            self.pgear5 = false
+            self.pgear0 = true
+            winLabel.text = "You Lose :("
+            winLabel.position.x = cam.position.x
+            winLabel.isHidden = false
+            car.physicsBody?.linearDamping = 150
+            car2.physicsBody?.linearDamping = 150
+            raceover = true
+
+        }
+        
         
     }
     
@@ -167,7 +186,7 @@ class GameScene: SKScene {
             car2.physicsBody?.applyImpulse(CGVector(dx: 3.3, dy: 0))
         }
         else if pgear3 == true && (car2.physicsBody?.velocity.dx)! < 400 * 10{
-            car2.physicsBody?.applyImpulse(CGVector(dx: 3.8, dy: 0))
+            car2.physicsBody?.applyImpulse(CGVector(dx: 4.1, dy: 0))
         }
         else if pgear4 == true && (car2.physicsBody?.velocity.dx)! < 525 * 10{
             car2.physicsBody?.applyImpulse(CGVector(dx: 3.5, dy: 0))
@@ -227,35 +246,11 @@ class GameScene: SKScene {
             }
         }
         
-        if car.position.x > 77500 && car.position.x > car2.position.x{
-            print("car1 wins!")
-            self.pgear6 = false
-            self.pgear5 = false
-            self.pgear0 = true
-            car.physicsBody?.linearDamping = 150
-            car2.physicsBody?.linearDamping = 150
-            winLabel.text = "You Win!"
+        if raceover == true{
             winLabel.position.x = cam.position.x
-            winLabel.isHidden = false
-            firework1.numParticlesToEmit = 1000
-            firework2.numParticlesToEmit = 1000
-            firework1.resetSimulation()
-            firework2.resetSimulation()
-
-
         }
-        else if car2.position.x > 77500 && car.position.x < car2.position.x{
-            print("car2 wins!")
-            self.pgear6 = false
-            self.pgear5 = false
-            self.pgear0 = true
-            winLabel.text = "You Lose :("
-            winLabel.position.x = cam.position.x
-            winLabel.isHidden = false
-            car.physicsBody?.linearDamping = 150
-            car2.physicsBody?.linearDamping = 150
-
-        }
+        
+ 
         
     }
     
