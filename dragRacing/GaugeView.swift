@@ -45,8 +45,6 @@ class GaugeView: UIView {
     var valueFont = UIFont.systemFont(ofSize: 23)
     var valueColor = UIColor.black
     
-    var play: GameScene!
-    var viewcon: GameViewController!
     
     var timer: Timer?
 

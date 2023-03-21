@@ -96,20 +96,24 @@ class GameScene: SKScene {
     }
 
     
-    func resetScene(){
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-            let skView = self.view! as SKView
+    func restartApplication () {
+        let viewController = GameViewController()
+        let navCtrl = UINavigationController(rootViewController: viewController)
 
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
+        guard
+            let window = UIApplication.shared.keyWindow,
+            let rootViewController = window.rootViewController
 
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .aspectFill
-            scene.size = skView.bounds.size
-
-            skView.presentScene(scene, transition: SKTransition.fade(withDuration: 2.0))
+        else {
+            return
         }
+
+        navCtrl.view.frame = rootViewController.view.frame
+        navCtrl.view.layoutIfNeeded()
+
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = navCtrl
+        })
     }
     
     func accelerateCar(){
@@ -119,7 +123,6 @@ class GameScene: SKScene {
         }
         else if gear1 == true && (car.physicsBody?.velocity.dx)! < 155 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
-
         }
         else if gear2 == true && (car.physicsBody?.velocity.dx)! < 275 * 10{
             car.physicsBody?.applyImpulse(CGVector(dx: 3, dy: 0))
@@ -155,6 +158,10 @@ class GameScene: SKScene {
             firework1.position = CGPoint(x: 77030.852, y: -20.012)
             firework2.position = CGPoint(x: 78080, y: -20.012)
             raceover = true
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+//                self.restart()
+//            }
+
 
 
         }
